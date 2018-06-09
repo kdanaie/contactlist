@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @subsection.name %>
+</p>
+
+<p>
+  <strong>Shortname:</strong>
+  <%= @subsection.shortname %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @subsection.link %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @subsection.description %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @subsection.position %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @subsection.status %>
+</p>
+
+<%= link_to 'Edit', edit_subsection_path(@subsection) %> |
+<%= link_to 'Back', subsections_path %>

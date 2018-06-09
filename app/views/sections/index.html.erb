@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Home', root_path %> <span> | </span>
+<%= link_to 'Depertments', departments_path %><span> | </span>
+<%= link_to 'Sections', sections_path %><span> | </span>
+<%= link_to 'Subsections', subsections_path %><span> | </span>
+<%= link_to 'Contact Us', contactus_path %><span> | </span>
+<%= link_to 'About', about_path %>
+
+<h1>Sections</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Shortname</th>
+      <th>Link</th>
+      <th>Description</th>
+      <th>Position</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sections.each do |section| %>
+      <tr>
+        <td><%= section.name %></td>
+        <td><%= section.shortname %></td>
+        <td><%= section.link %></td>
+        <td><%= section.description %></td>
+        <td><%= section.position %></td>
+        <td><%= section.status %></td>
+        <td><%= link_to 'Show', section %></td>
+        <td><%= link_to 'Edit', edit_section_path(section) %></td>
+        <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Section', new_section_path %>

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_08_071709) do
+ActiveRecord::Schema.define(version: 2018_06_09_122830) do
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "type"
+    t.integer "status"
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string "first_name"
@@ -21,6 +30,39 @@ ActiveRecord::Schema.define(version: 2018_06_08_071709) do
     t.string "country"
     t.string "phone"
     t.text "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.string "shortname"
+    t.string "link"
+    t.text "description"
+    t.integer "position"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "name"
+    t.string "shortname"
+    t.string "link"
+    t.text "description"
+    t.integer "position"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subsections", force: :cascade do |t|
+    t.string "name"
+    t.string "shortname"
+    t.string "link"
+    t.text "description"
+    t.integer "position"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
