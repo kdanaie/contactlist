@@ -3,3 +3,6 @@
 <p> Description: <%= @article.description %> </p>
 <p> Position: <%= @article.position %> </p>
 <p> Status: <%= @article.status %> </p>
+
+<%= link_to "edit Article", edit_article_path(@article) %>
+<%= link_to "Back to articles listing", articles_path %>

@@ -5,6 +5,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.text :description
       t.integer :position
       t.integer :status
+      t.timestamps
     end
   end
 end
