@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :thenewsreporters
   resources :subsections
   resources :sections
   resources :departments

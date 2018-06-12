@@ -1,0 +1,19 @@
+<%= render 'top' %>>
+<body>
+<div class="body_wrapper">
+
+<div class="center">
+  <%= render 'topmenu' %>
+  <%= render 'nav' %>
+  <%= render 'slider' %>
+
+  <div class="content_area">
+<%= yield :container %>
+    <%= render 'footertop' %>
+    <%= render 'footerbottom' %>
+  </div>
+</div>
+
+<%= render 'scripts' %>
+</body>
+</html>

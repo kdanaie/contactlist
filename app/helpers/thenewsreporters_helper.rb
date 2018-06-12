@@ -1,0 +1,2 @@
+module ThenewsreportersHelper
+end
