@@ -1,0 +1,27 @@
+<% obj.each do |department| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class="article-title">
+          <%= link_to department.name, department_path(department) %>
+        </div>
+        <div class="article-body">
+          <%= truncate(department.description, length: 100) %>
+          <div class="article-meta-details">
+            <small>Created <%= time_ago_in_words(department.created_at) %> ago,
+              last updated <%= time_ago_in_words(department.updated_at) %> ago</small>
+          </div>
+        </div>
+        <% if (logged_in? && current_user.admin?) %>
+          <div class="article-actions">
+            <%= link_to "Show ", department_path(department), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Edit ", edit_department_path(department), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Delete ", department_path(department), method: :delete,
+                        data: { confirm: "Are you sure you want to delete the department?"}, class: "btn btn-xs btn-danger" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+

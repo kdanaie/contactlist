@@ -1,0 +1,27 @@
+<% obj.each do |subsection| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class="article-title">
+          <%= link_to subsection.name, subsection_path(subsection) %>
+        </div>
+        <div class="article-body">
+          <%= truncate(subsection.description, length: 100) %>
+          <div class="article-meta-details">
+            <small>Created <%= time_ago_in_words(subsection.created_at) %> ago,
+              last updated <%= time_ago_in_words(subsection.updated_at) %> ago</small>
+          </div>
+        </div>
+        <% if (logged_in? && current_user.admin?) %>
+          <div class="article-actions">
+            <%= link_to "Show ", subsection_path(subsection), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Edit ", edit_subsection_path(subsection), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Delete ", subsection_path(subsection), method: :delete,
+                        data: { confirm: "Are you sure you want to delete the subsection?"}, class: "btn btn-xs btn-danger" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
