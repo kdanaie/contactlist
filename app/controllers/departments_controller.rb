@@ -1,5 +1,7 @@
 class DepartmentsController < ApplicationController
+  before_action :require_admin, only: [:index, :new, :show, :edit, :update, :destroy]
   before_action :set_department, only: [:show, :edit, :update, :destroy]
+
 
   # GET /departments
   # GET /departments.json
@@ -71,4 +73,12 @@ class DepartmentsController < ApplicationController
     def department_params
       params.require(:department).permit(:name, :shortname, :link, :description, :position, :status)
     end
+
+    def require_admin
+      if ((!logged_in?) || (logged_in? and !current_user.admin?))
+        flash[:danger] = "Only admin users can perform that action"
+        redirect_to root_path
+      end
+    end
+
 end

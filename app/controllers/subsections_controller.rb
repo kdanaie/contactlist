@@ -1,4 +1,5 @@
 class SubsectionsController < ApplicationController
+  before_action :require_admin, only: [:index, :new, :show, :edit, :update, :destroy]
   before_action :set_subsection, only: [:show, :edit, :update, :destroy]
 
   # GET /subsections
@@ -71,4 +72,11 @@ class SubsectionsController < ApplicationController
     def subsection_params
       params.require(:subsection).permit(:name, :shortname, :link, :description, :position, :status)
     end
+
+  def require_admin
+    if ((!logged_in?) || (logged_in? and !current_user.admin?))
+      flash[:danger] = "Only admin users can perform that action"
+      redirect_to root_path
+    end
+  end
 end

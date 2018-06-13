@@ -1,4 +1,5 @@
 class SectionsController < ApplicationController
+  before_action :require_admin, only: [:index, :new, :show, :edit, :update, :destroy]
   before_action :set_section, only: [:show, :edit, :update, :destroy]
 
   # GET /sections
@@ -71,4 +72,11 @@ class SectionsController < ApplicationController
     def section_params
       params.require(:section).permit(:name, :shortname, :link, :description, :position, :status)
     end
+
+  def require_admin
+    if ((!logged_in?) || (logged_in? and !current_user.admin?))
+      flash[:danger] = "Only admin users can perform that action"
+      redirect_to root_path
+    end
+  end
 end
